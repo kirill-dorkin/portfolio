@@ -21,6 +21,21 @@ const projects = [
   // projects can be added an removed
   // if there are no projects, Projects section won't show up
   {
+    name: 'Vivid Creation',
+    description:
+      'Vivid Creation is a modern AI-powered platform for creating and selling presentations. It supports content generation, slide customization, and template monetization',
+    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Radix UI', 'Prisma', 'Clerk', 'Bun'],
+    livePreview: 'https://vivid-creation-five.vercel.app',
+  },
+  {
+    name: 'ChatBot AI',
+    description:
+      'ChatBot AI is an AI-powered support bot that responds to user inquiries in real time. Easily integrates with external APIs and adapts to any business domain',
+    stack: ['JavaScript', 'React', 'CSS', 'Groq API'],
+    sourceCode: 'https://github.com/kirill-dorkin/ai-chatbot',
+    livePreview: 'https://chatbot-ai-beta-six.vercel.app',
+  },
+  {
     name: 'Motel',
     description:
       'Motel — full-stack MERN web app for booking and hosting hotels, inspired by Airbnb, with map integration, user dashboards, and seamless reservation management',
@@ -36,21 +51,6 @@ const projects = [
     ],
     sourceCode: 'https://github.com/kirill-dorkin/motel-frontend',
     livePreview: 'https://motel-frontend-seven.vercel.app',
-  },
-  {
-    name: 'Vivid Creation',
-    description:
-      'Vivid Creation is a modern AI-powered platform for creating and selling presentations. It supports content generation, slide customization, and template monetization',
-    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Radix UI', 'Prisma', 'Clerk', 'Bun'],
-    livePreview: 'https://vivid-creation-five.vercel.app',
-  },
-  {
-    name: 'ChatBot AI',
-    description:
-      'ChatBot AI is an AI-powered support bot that responds to user inquiries in real time. Easily integrates with external APIs and adapts to any business domain',
-    stack: ['JavaScript', 'React', 'CSS', 'Groq API'],
-    sourceCode: 'https://github.com/kirill-dorkin/ai-chatbot',
-    livePreview: 'https://chatbot-ai-beta-six.vercel.app',
   },
 ]
 
