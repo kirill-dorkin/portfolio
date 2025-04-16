@@ -4,20 +4,38 @@ import PropTypes from 'prop-types'
 const ThemeContext = createContext()
 
 const ThemeProvider = ({ children }) => {
-  const [themeName, setThemeName] = useState('light')
+  const [themeName, setThemeName] = useState(() => {
+    const storedTheme = localStorage.getItem('themeName')
+    return storedTheme || 'light'
+  })
 
   useEffect(() => {
-    const darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    setThemeName(darkMediaQuery.matches ? 'dark' : 'light')
-    darkMediaQuery.addEventListener('change', (e) => {
-      setThemeName(e.matches ? 'dark' : 'light')
-    });
-  }, [])
+    const applyTheme = (name) => {
+      document.documentElement.classList.toggle('dark', name === 'dark')
+    }
+
+    applyTheme(themeName)
+
+    const darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    const handleSystemThemeChange = (e) => {
+      const storedTheme = localStorage.getItem('themeName')
+      if (!storedTheme) {
+        const systemTheme = e.matches ? 'dark' : 'light'
+        setThemeName(systemTheme)
+        applyTheme(systemTheme)
+      }
+    }
+
+    darkMediaQuery.addEventListener('change', handleSystemThemeChange)
+
+    return () => darkMediaQuery.removeEventListener('change', handleSystemThemeChange)
+  }, [themeName])
 
   const toggleTheme = () => {
-    const name = themeName === 'dark' ? 'light' : 'dark'
-    localStorage.setItem('themeName', name)
-    setThemeName(name)
+    const newTheme = themeName === 'dark' ? 'light' : 'dark'
+    localStorage.setItem('themeName', newTheme)
+    setThemeName(newTheme)
+    document.documentElement.classList.toggle('dark', newTheme === 'dark')
   }
 
   return (
